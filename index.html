@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="column column-1 clock">
+            <div class="time">
+                <div class="hour"></div>
+                <div class="minute"></div>
+                <div class="second"></div>
+            </div>
+            <div class="date"></div>
+        </div>
+        <div class="row row-1">
+            <div class="column column-1">
+                <span class="process_control">
+                    <p>PROCESS CONTROL</p>
+                    <p>00:00</p>
+                </span>
+            </div>
+            <div class="row row-3">
+                <div class="column">
+                    <p class="alert-text">R1 </p>
+                </div>
+                <div class="column center">
+                    <p class="circle-alert">R2</p>
+                </div>
+            </div>
+        </div>
+        <div class="row row-4">
+            <div class="column">
+                <span>
+                    <p>SET - I</p>
+                    <p>00:00</p>
+                </span>
+            </div>
+            <div class="column">
+                <span>
+                    <p>LOW SET - I</p>
+                    <p>00:00</p>
+                </span>
+            </div>
+            <div class="column">
+                <span>
+                    <p>HIGH SET - I</p>
+                    <p>00:00</p>
+                </span>
+            </div>
+        </div>
+        <div class="row row-5">
+            <div class="column">
+                <span>
+                    <p>SET - II</p>
+                    <p>00:00</p>
+                </span>
+            </div>
+            <div class="column">
+                <span>
+                    <p>LOW SET - II</p>
+                    <p>00:00</p>
+                </span>
+            </div>
+            <div class="column">
+                <span>
+                    <p>HIGH SET - II</p>
+                    <p>00:00</p>
+                </span>
+            </div>
+        </div>
+        <div class="row row-6">
+            <div class="column">
+                <span>
+                    <p>SET - III</p>
+                    <p>00:00</p>
+                </span>
+            </div>
+            <div class="column">
+                <span>
+                    <p>LOW SET - III</p>
+                    <p>00:00</p>
+                </span>
+            </div>
+            <div class="column">
+                <span>
+                    <p>HIGH SET - III</p>
+                    <p>00:00</p>
+                </span>
+            </div>
+        </div>
+        <div class="row row-7">
+            <div class="column">
+                <span class="chart">
+                    <p>CONTROL %</p>
+                    <div class="circle">
+                        <div class="percentage-chart percentage-chart-focus">
+                            <svg viewBox="0 0 36 36">
+                                <path class="percentage-chart-bg" d="M18 2.0845
+                            a 15.9155 15.9155 0 0 1 0 31.831
+                            a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="percentage-chart-stroke" stroke-dasharray="60, 100" d="M18 2.0845
+                            a 15.9155 15.9155 0 0 1 0 31.831
+                            a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            </svg>
+                            <div class="counter" style="--counter-end:71"></div>
+                        </div>
+                    </div>
+
+            </div>
+            </span>
+            <div class="column">
+                <span>
+                    <p>ANALOG OUTPUT</p>
+                    <p>00:00</p>
+                </span>
+            </div>
+            <div class="column">
+                <span>
+                    <p>INPUT TYPE</p>
+                    <p>00:00</p>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+    </div>
+
+    <script>
+        const hourEl = document.querySelector(".hour");
+        const minuteEl = document.querySelector(".minute");
+        const secondEl = document.querySelector(".second");
+        const dateEl = document.querySelector(".date");
+
+        let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Aug", "Oct", "Nov", "Dec"];
+        let years = 2023
+        const displayClock = () => {
+            const now = new Date();
+            const month = now.getMonth();
+            const day = now.getDate();
+            const dayOfWeek = now.getDay();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            dateEl.textContent = `${days[dayOfWeek]} ${day} ${months[month]} ${years}`;
+            hourEl.textContent = String(hours).padStart(2, "0");
+            minuteEl.textContent = String(minutes).padStart(2, "0");
+            secondEl.textContent = String(seconds).padStart(2, "0");
+        };
+
+        setInterval(displayClock, 1000);
+
+    </script>
+
+
+</body>
+
+</html>

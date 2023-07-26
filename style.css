@@ -1,0 +1,202 @@
+.grid-container {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 50%;
+    border: 1px solid gray;
+    background-color: #565458;
+    padding: 0.7rem;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 10px;
+  }
+  
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+  }
+  
+  .column {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .row-1 {
+    grid-template-columns: 5fr 1fr;
+  }
+  
+  .row-2{
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .row-4,
+  .row-5,
+  .row-6,
+  .row-7 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .row-3{
+   display: flex;
+   flex-direction: column;
+  }
+
+  /*clock container */
+
+.clock {
+    background-color: #28262c;
+    padding: 0.5rem 1rem 0.5rem;
+    border-radius: 0.35rem;
+}
+.time {
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.time::after {
+    content: "";
+    height: 2px;
+    width: 100%;
+    background-color: #28262c;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Styling for hour, minute, and second elements */
+.hour,
+.minute,
+.second {
+    background-color: #302e35;
+    padding: 0.5rem 0.25rem;
+    border-radius: 0.35rem;
+    text-align: center;
+    min-width: 4.6rem;
+    color:rgb(5, 145, 121);
+}
+
+.date {
+    text-align: center;
+    margin-top: 1rem;
+    color: white;
+}
+.column{
+    background-color: #28262c;
+    color: white;
+    border: none;
+    border-radius: 0.35rem;
+    font-size: 1rem;
+}
+SPAN, P{
+    text-align: center;
+}
+.process_control{
+    display: flex;
+    padding:2rem;
+    justify-content: space-around;
+}
+
+
+
+/* process chart */
+
+.circle {
+    margin-left: 35px;
+}
+
+@property --percentage {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+}
+
+.counter {
+    animation: counter 5s ease-out;
+    animation-fill-mode: forwards;
+    counter-reset: num var(--percentage);
+}
+
+.counter::after {
+    content: counter(num) "%";
+}
+
+@keyframes counter {
+    from {
+        --percentage: 0;
+    }
+
+    to {
+        --percentage: var(--counter-end);
+    }
+}
+
+.percentage-chart {
+    margin-left: 20px;
+    width: 90px;
+    height: 90px;
+    position: relative;
+}
+
+.percentage-chart-bg {
+    fill: none;
+    stroke: rgb(49, 92, 85);
+    stroke-width: 4;
+}
+
+.percentage-chart-stroke {
+    fill: none;
+    stroke-width: 5;
+    stroke:rgb(5, 145, 121);
+    stroke-linecap: round;
+    animation: progress 5s ease-out forwards;
+}
+
+.counter {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size:1rem;
+    color: white;
+    transform: translate3d(-50%, -50%, 0);
+}
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+}
+.chart{
+    display: flex;
+}
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.alert-text {
+    animation: blink 2s infinite; 
+    color: rgb(241, 6, 6);
+}
+/* 
+.circle-alert {
+    width: 40px; 
+    height: 40px; 
+    padding: 0;
+    border-radius: 50%;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: blink 2s infinite; 
+    color: white;
+ }
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: 0;
+    padding: 0;
+} */
